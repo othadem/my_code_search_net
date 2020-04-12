@@ -1,7 +1,20 @@
+import tensorflow as tf
+# gpus = tf.config.experimental.list_physical_devices('GPU')
+# tf.config.experimental.set_memory_growth(gpus[0], True)
+
+# tf.config.experimental.set_virtual_device_configuration(gpus[0], [tf.config.experimental.VirtualDeviceConfiguration(memory_limit=2048)])
+
+# or use this code
+# gpu_options = tf.GPUOptions(allow_growth=True)
+# sess = tf.Session(config=tf.ConfigProto(gpu_options=gpu_options))
+
+# Or try:
+#gpu_options = tf.GPUOptions(per_process_gpu_memory_fraction = 0.5)
+#sess = tf.Session(config=tf.ConfigProto(gpu_options=gpu_options))
+
 from typing import List, Tuple, Dict, Any, Optional, Union
 
 import numpy as np
-import tensorflow as tf
 from tensorflow.python.ops.init_ops import Initializer
 
 from dpu_utils.mlutils import Vocabulary

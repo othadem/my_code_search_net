@@ -17,6 +17,22 @@ Options:
     --sequential                     Do not parallelise data-loading. Simplifies debugging. [default: False]
     --debug                          Enable debug routines. [default: False]
 """
+
+#import tensorflow as tf
+
+# gpus = tf.config.experimental.list_physical_devices('GPU')
+# tf.config.experimental.set_memory_growth(gpus[0], True)
+
+# tf.config.experimental.set_virtual_device_configuration(gpus[0], [tf.config.experimental.VirtualDeviceConfiguration(memory_limit=2048)])
+
+# or use this code
+# gpu_options = tf.GPUOptions(allow_growth=True)
+# sess = tf.Session(config=tf.ConfigProto(gpu_options=gpu_options))
+
+# Or try:
+#gpu_options = tf.GPUOptions(per_process_gpu_memory_fraction = 0.5)
+#sess = tf.Session(config=tf.ConfigProto(gpu_options=gpu_options))
+
 from pathlib import Path
 
 from docopt import docopt
@@ -31,7 +47,7 @@ def run(arguments):
     # if you do not pass arguments for train/valid/test data default to files checked into repo.
     if not arguments['VALID_DATA_PATH']:
         dir_path = Path(__file__).parent.absolute()
-        print(dir_path)
+        print("dir_path ", dir_path)
         arguments['VALID_DATA_PATH'] = str(dir_path / 'data_dirs_valid.txt')
         arguments['TEST_DATA_PATH'] = str(dir_path / 'data_dirs_test.txt')
 
